@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/musicals", musicalRoutes);
+app.use("/playlists", playlistRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello World!");

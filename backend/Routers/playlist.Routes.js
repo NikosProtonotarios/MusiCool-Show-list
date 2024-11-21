@@ -1,5 +1,6 @@
 const { 
     getAllPlaylists, 
+    getPlaylistById,
     createPlaylist, 
     updatePlaylist, 
     deletePlaylist, 
@@ -9,6 +10,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", getAllPlaylists);
+router.get("/:id", getPlaylistById);
 router.post("/create", createPlaylist);
 router.put("/:id", updatePlaylist);
 router.delete("/:id", deletePlaylist);
