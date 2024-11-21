@@ -3,7 +3,7 @@ const Playlist = require("../models/playlistModel");
 const getAllPlaylists = async (req, res) => {
     try {
         const playlists = await Playlist.find({}).populate('musicals');
-        return res.status(200).send({ msg: "Playlists retrieved successfully", data: playlists });
+        return res.status(200).send({ msg: "Musical lists retrieved successfully", data: playlists });
     } catch (error) {
         console.log(error);
         return res.status(500).send({ msg: "Internal server error", error });
@@ -13,13 +13,13 @@ const getAllPlaylists = async (req, res) => {
 const getPlaylistById = async (req, res) => {
     try {
         const { id } = req.params;
-        const playlist = await Playlist.findById(id).populate('musicals'); // Populate musicals
+        const playlist = await Playlist.findById(id).populate('musicals');
 
         if (!playlist) {
-            return res.status(404).send({ msg: "Playlist not found" });
+            return res.status(404).send({ msg: "Musical list not found" });
         }
 
-        return res.status(200).send({ msg: "Playlist retrieved successfully", data: playlist });
+        return res.status(200).send({ msg: "Musical list retrieved successfully", data: playlist });
     } catch (error) {
         console.log(error);
         return res.status(500).send({ msg: "Internal server error", error });
@@ -36,7 +36,7 @@ const createPlaylist = async (req, res) => {
         const playlist = new Playlist({ name, musicals });
         await playlist.save();
 
-        await playlist.populate('musicals').execPopulate(); // Populate musicals
+        await playlist.populate('musicals');
 
         return res.status(201).send(playlist);
     } catch (error) {
@@ -51,10 +51,10 @@ const updatePlaylist = async (req, res) => {
         const playlist = await Playlist.findByIdAndUpdate(id, req.body, { new: true }).populate('musicals'); // Populate musicals
 
         if (!playlist) {
-            return res.status(404).send({ msg: "Playlist not found" });
+            return res.status(404).send({ msg: "Musical list not found" });
         }
 
-        return res.status(200).send({ msg: "Playlist updated successfully", data: playlist });
+        return res.status(200).send({ msg: "Musical list updated successfully", data: playlist });
     } catch (error) {
         console.log(error);
         return res.status(500).send({ msg: "Internal server error", error });
@@ -64,15 +64,15 @@ const updatePlaylist = async (req, res) => {
 const deletePlaylist = async (req, res) => {
     try {
         const { id } = req.params;
-        const playlist = await Playlist.findById(id).populate('musicals'); // Populate musicals before deletion
+        const playlist = await Playlist.findById(id);
 
         if (!playlist) {
-            return res.status(404).send({ msg: "Playlist not found" });
+            return res.status(404).send({ msg: "Musical list not found" });
         }
 
-        await Playlist.findByIdAndDelete(id); // Delete the playlist
+        await Playlist.findByIdAndDelete(id);
 
-        return res.status(200).send({ msg: "Playlist deleted successfully", data: playlist }); // Return the deleted playlist
+        return res.status(200).send({ msg: "Musical list deleted successfully", data: playlist }); 
     } catch (error) {
         console.log(error);
         return res.status(500).send({ msg: "Internal server error", error });

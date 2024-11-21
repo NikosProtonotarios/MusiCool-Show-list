@@ -3,7 +3,7 @@ const {
     createMusical, 
     updateMusical, 
     deleteMusical,
-} = require("../controllers/musical.Controller")
+} = require("../controllers/musical.controller")
 
 const express = require("express");
 const router = express.Router();
