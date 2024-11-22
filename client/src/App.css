@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.create-playlist {
+    display: flex;
+    gap: 10px;
+    border: 1px solid black;
+    padding: 10px;
+    width: 400px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.playlist {
+    border: 1px solid black;
+    padding: 10px;
+    width: 400px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.playlist-input {
+    display: flex;
+    gap: 10px;
+}
+
+.title {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 10px;
+    display: flex;
+    justify-content: center
+}
