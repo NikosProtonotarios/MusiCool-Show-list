@@ -33,6 +33,22 @@
     width: 400px;
 }
 
+.musicalText {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 0px 10px 10px 0px;
+    width: 400px;
+}
+
+.musicalTitle {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 10px 10px 0px;
+}
+
 .playlist {
     border: 1px solid black;
     padding: 10px;
