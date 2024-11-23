@@ -16,14 +16,28 @@
     padding: 10px;
     width: 400px;
     border-radius: 5px;
-    margin: 10px;
+    margin: 0px 10px 10px 0px;
+}
+
+.musicalTitle {
+    text-align: center;
+}
+
+.musical-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    width: 400px;
 }
 
 .playlist {
     border: 1px solid black;
     padding: 10px;
     width: 400px;
-    margin: 10px;
+    margin: 0px 10px 10px 0px;
     border-radius: 5px;
 }
 
