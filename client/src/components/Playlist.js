@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Playlist() {
-  const [playlistName, setPlaylistName] = React.useState("");
+function Playlist({ handlePlaylistChange, setPlaylistName }) {
 
-  const handlePlaylistChange = (event) => {
-    setPlaylistName(event.target.value);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // You can add logic here for any other actions after setting the playlist name
   };
 
   return (
     <div>
-        <h3>Create Your Showlist</h3>
-      <form onSubmit="">
+      <h3>Create Your Showlist</h3>
+      <form onSubmit={handleSubmit}>
         <div className="create-playlist">
           <div>
             <label htmlFor="playlist-name">Title: </label>
@@ -18,27 +18,10 @@ function Playlist() {
               id="playlist-name"
               type="text"
               placeholder="Enter playlist name"
-              value={playlistName}
-              onChange={handlePlaylistChange}
+              onChange={handlePlaylistChange} // This updates the playlist name as user types
             />
           </div>
           <button type="submit">Create ShowList</button>
-        </div>
-
-        <div className="playlist">
-          <div className="playlist-input">
-            <div>
-              <label htmlFor="musical">Musical: </label>
-              <input
-                id="musical"
-                type="text"
-                placeholder="Enter a musical show"
-              />
-            </div>
-            <button type="submit">Delete ShowList</button>
-          </div>
-          <h1>{playlistName}</h1>
-          <h1></h1>
         </div>
       </form>
     </div>

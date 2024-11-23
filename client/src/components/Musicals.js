@@ -8,7 +8,7 @@ let initialValue = {
     date: "",
 }
 
-function Musicals() {
+function Musicals({getAllMusicals,}) {
   const [musicalForm, setMusicalForm] = useState(initialValue);
 
   function handleChange(e) {
@@ -28,9 +28,10 @@ function Musicals() {
         // or I can do it like this if I want... but I don't want... Moohahaha: let {name, country, city, date} = newMusical;
         let response = await axios.post("http://localhost:8080/musicals/create", newMusical);
         alert(response.data.msg);
+        getAllMusicals();
         setMusicalForm(initialValue);
     } catch (error) {
-        console.error(error.massage);
+        console.error(error.message);
     }
   }
 

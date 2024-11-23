@@ -57,6 +57,10 @@
     border-radius: 5px;
 }
 
+.userTitle {
+    text-align: center;
+}
+
 .playlist-input {
     display: flex;
     gap: 10px;

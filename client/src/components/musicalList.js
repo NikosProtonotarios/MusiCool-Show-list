@@ -1,22 +1,6 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
 
-function MusicalList() {
-    const [musicals, setMusicals] = useState([]);
 
-    async function getAllMusicals() {
-        try {
-            let response = await axios.get('http://localhost:8080/musicals');
-            console.log(response.data);
-            setMusicals(response.data.data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    useEffect(() => {
-        getAllMusicals();
-    }, []);
+function MusicalList({musicals, deleteMusical}) {
 
     return (
         <div>
@@ -31,6 +15,8 @@ function MusicalList() {
                             <p>{musical.country}</p>
                             <p>{musical.city}</p>
                             <p>{musical.date}</p>
+                            <br/>
+                            <button onClick={() => deleteMusical(musical._id)}>Delete This Musical From The List</button>
                         </div>        
                     );
                 })}
