@@ -56,8 +56,8 @@ function App() {
           <MusicalList musicals={musicals} deleteMusical={deleteMusical} />
         </div>
         <div>
-          <Playlist handlePlaylistChange={handlePlaylistChange} />
-          <UserPlaylist playlistName={playlistName} />
+          <Playlist />
+          {/* <UserPlaylist /> */}
         </div>
       </div>
     </div>

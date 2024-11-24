@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 
-function UserPlaylist({playlistName}) {
-  
+function UserPlaylist() {
+  const [playlistUser, setPlaylistUser] = useState([]);
 
   return (
     <div>
@@ -16,9 +16,9 @@ function UserPlaylist({playlistName}) {
                 placeholder="Enter a musical show"
               />
             </div>
-            <button type="submit">Enter a Musical</button>
+            <input type="submit" value="Enter a Musical"/>
           </div>
-          <h2 className="userTitle">{playlistName}</h2>
+          <h2 className="userTitle"></h2>
         </div>
       </form>
     </div>
