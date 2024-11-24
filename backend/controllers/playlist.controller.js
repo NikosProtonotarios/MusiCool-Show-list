@@ -2,7 +2,7 @@ const Playlist = require("../models/playlistModel");
 
 const getAllPlaylists = async (req, res) => {
     try {
-        const playlists = await Playlist.find({}).populate('musicals');
+        const playlists = await Playlist.find({})
         return res.status(200).send({ msg: "Musical lists retrieved successfully", data: playlists });
     } catch (error) {
         console.log(error);
@@ -13,7 +13,7 @@ const getAllPlaylists = async (req, res) => {
 const getPlaylistById = async (req, res) => {
     try {
         const { id } = req.params;
-        const playlist = await Playlist.findById(id).populate('musicals');
+        const playlist = await Playlist.findById(id)
 
         if (!playlist) {
             return res.status(404).send({ msg: "Musical list not found" });
@@ -28,15 +28,16 @@ const getPlaylistById = async (req, res) => {
 
 const createPlaylist = async (req, res) => {
     try {
-        const { name, musicals } = req.body;
+        const { name } = req.body;
         if (!name) {
             return res.status(400).send({ msg: "Name is required." });
         }
 
-        const playlist = new Playlist({ name, musicals });
+        // const playlist = new Playlist({ name, musicals });
+        const playlist = new Playlist({ name });
         await playlist.save();
 
-        await playlist.populate('musicals');
+        // await playlist.populate('musicals');
 
         return res.status(201).send(playlist);
     } catch (error) {
