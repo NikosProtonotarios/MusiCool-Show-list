@@ -36,59 +36,90 @@ function Playlist() {
       );
       console.log(response.data);
       setShowList([...showList, response.data]);
-      alert("Playlist created successfully!");
+      alert("A musical added successfully!");
 
       setPlaylistName(""); // Reset the playlist name
     } catch (error) {
       console.log(error.message);
     }
   }
-   console.log(addMusical);
+  console.log(addMusical);
 
-   async function fetchAllLists() {
+  async function fetchAllLists() {
     try {
-     let response = await axios.get("http://localhost:8080/playlists");
-     setShowList(response.data.data);
-    console.log(response);
+      let response = await axios.get("http://localhost:8080/playlists");
+      setShowList(response.data.data);
+      console.log(response);
     } catch (error) {
       console.log(error.message);
     }
-   }
+  }
 
-   useEffect(() => {
+  async function handleDelete(id) {
+    const confirmed = window.confirm("Do you want to delete this musical?");
+
+    if (confirmed) {
+      try {
+        let response = await axios.delete(
+          `http://localhost:8080/playlists/${id}`
+        );
+        console.log(response.data);
+
+        setShowList(showList.filter((showItem) => showItem._id !== id));
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log("Deletion cancelled");
+    }
+  }
+
+  useEffect(() => {
     fetchAllLists();
-   }, []);
+  }, []);
 
   return (
     <div>
-      <h3>Create Your Showlist</h3>
+      <h3 style={{ textAlign: "center" }}>Create Your Musical List</h3>
       <form onSubmit={handleCreatingNewList}>
         <div className="create-playlist">
           <div>
-            <label htmlFor="playlist-name">Title: </label>
+            <label className="caligraf" htmlFor="playlist-name">
+              Title:{" "}
+            </label>
             <input
+              className="enterAmusical"
               id="playlist-name"
               type="text"
-              placeholder="Enter playlist name"
+              placeholder="Enter a musical to your list"
               value={playlistName} // Bind the playlist name input to state
               onChange={handlePlaylistNameChange} // Update playlist name state
             />
-
           </div>
-          <input type="submit" value="Create ShowList" />
+          <input className="hue add" type="submit" value="Add a Musical to the List" />
         </div>
       </form>
       {/* {addMusical ? <UserPlaylist /> : null} */}
       <div className="showlist">
-        <h3>Current Showlist</h3>
+        <h2>Current Showlist</h2>
         <div className="showlist-container">
-          {showList.length > 0 ? showList.map((showItem) => {
-            return (
-              <div key={showItem.id}>
-                <h4>{showItem.name}</h4>
-              </div> 
-            )
-          }): <p>No showlists found</p>}
+          {showList.length > 0 ? (
+            showList.map((showItem) => {
+              return (
+                <div className="showItems" key={showItem.id}>
+                  <h4>{showItem.name}</h4>
+                  <p
+                    onClick={() => handleDelete(showItem._id)}
+                    className="deleteItem caligraf"
+                  >
+                    Delete
+                  </p>
+                </div>
+              );
+            })
+          ) : (
+            <p>No musical added found</p>
+          )}
         </div>
       </div>
     </div>

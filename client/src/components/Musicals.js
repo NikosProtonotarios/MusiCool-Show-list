@@ -2,45 +2,54 @@ import React, { useState } from "react";
 import axios from "axios";
 
 let initialValue = {
-    name: "",
-    country: "",
-    city: "",
-    date: "",
-}
+  name: "",
+  country: "",
+  city: "",
+  date: "",
+};
 
-function Musicals({getAllMusicals,}) {
+function Musicals({ getAllMusicals }) {
   const [musicalForm, setMusicalForm] = useState(initialValue);
 
   function handleChange(e) {
     const { name, value } = e.target;
-    setMusicalForm({...musicalForm, [name]: value});
+    setMusicalForm({ ...musicalForm, [name]: value });
   }
 
   async function handleCreatingNewMusical(e) {
     e.preventDefault();
     try {
-        let newMusical = {
-            name: musicalForm.name,
-            country: musicalForm.country,
-            city: musicalForm.city,
-            date: musicalForm.date,
-        };
-        // or I can do it like this if I want... but I don't want... Moohahaha: let {name, country, city, date} = newMusical;
-        let response = await axios.post("http://localhost:8080/musicals/create", newMusical);
-        alert(response.data.msg);
-        getAllMusicals();
-        setMusicalForm(initialValue);
+      let newMusical = {
+        name: musicalForm.name,
+        country: musicalForm.country,
+        city: musicalForm.city,
+        date: musicalForm.date,
+      };
+      // or I can do it like this if I want... but I don't want... Moohahaha: let {name, country, city, date} = newMusical;
+      let response = await axios.post(
+        "http://localhost:8080/musicals/create",
+        newMusical
+      );
+      alert(response.data.msg);
+      getAllMusicals();
+      setMusicalForm(initialValue);
     } catch (error) {
-        console.error(error.message);
+      console.error(error.message);
     }
   }
 
   return (
     <div>
-        <h3>Add a New Musical Show</h3>
-      <form className="musical-form-container" onSubmit={handleCreatingNewMusical} >
-        <label htmlFor="name-musical">Name: </label>
+      <h3>Add a New Musical Show</h3>
+      <form
+        className="musical-form-container"
+        onSubmit={handleCreatingNewMusical}
+      >
+        <label className="caligraf" htmlFor="name-musical">
+          Name:{" "}
+        </label>
         <input
+          className="create-form"
           id="name-musical"
           type="text"
           placeholder="Enter the Musical's name"
@@ -49,8 +58,11 @@ function Musicals({getAllMusicals,}) {
           name="name"
         />
 
-        <label htmlFor="country-musical">Country: </label>
+        <label className="caligraf" htmlFor="country-musical">
+          Country:{" "}
+        </label>
         <input
+          className="create-form"
           id="country-musical"
           type="text"
           placeholder="Enter the County"
@@ -59,8 +71,11 @@ function Musicals({getAllMusicals,}) {
           name="country"
         />
 
-        <label htmlFor="city-musical">City: </label>
+        <label className="caligraf" htmlFor="city-musical">
+          City:{" "}
+        </label>
         <input
+          className="create-form"
           id="city-musical"
           type="text"
           placeholder="Enter the City"
@@ -69,8 +84,11 @@ function Musicals({getAllMusicals,}) {
           name="city"
         />
 
-        <label htmlFor="date-musical">Date: </label>
+        <label className="caligraf" htmlFor="date-musical">
+          Date:{" "}
+        </label>
         <input
+          className="create-form"
           id="date-musical"
           type="date"
           placeholder="Enter the Date"
@@ -78,7 +96,11 @@ function Musicals({getAllMusicals,}) {
           value={musicalForm.date}
           name="date"
         />
-        <input type="submit" value="create-musical" />
+        <input
+          className="hue create-musical"
+          type="submit"
+          value="create-musical"
+        />
       </form>
     </div>
   );
