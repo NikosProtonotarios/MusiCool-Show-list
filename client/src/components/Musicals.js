@@ -27,7 +27,7 @@ function Musicals({ getAllMusicals }) {
       };
       // or I can do it like this if I want... but I don't want... Moohahaha: let {name, country, city, date} = newMusical;
       let response = await axios.post(
-        "http://localhost:8080/musicals/create",
+        "https://musicool-show-list.onrender.com/musicals/create",
         newMusical
       );
       alert(response.data.msg);

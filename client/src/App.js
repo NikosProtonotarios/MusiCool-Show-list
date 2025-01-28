@@ -17,7 +17,7 @@ function App() {
 
   async function getAllMusicals() {
     try {
-      let response = await axios.get("http://localhost:8080/musicals");
+      let response = await axios.get("https://musicool-show-list.onrender.com/musicals");
       console.log(response.data);
       setMusicals(response.data.data);
     } catch (error) {
@@ -35,7 +35,7 @@ function App() {
     if (confirmed) {
       try {
         let response = await axios.delete(
-          `http://localhost:8080/musicals/${id}`
+          `https://musicool-show-list.onrender.com/musicals/${id}`
         );
         console.log(response.data);
         setMusicals(musicals.filter((musical) => musical._id !== id));

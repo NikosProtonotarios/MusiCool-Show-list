@@ -31,7 +31,7 @@ function Playlist() {
       };
 
       const response = await axios.post(
-        "http://localhost:8080/playlists/create",
+        "https://musicool-show-list.onrender.com/playlists/create",
         newList
       );
       console.log(response.data);
@@ -47,7 +47,7 @@ function Playlist() {
 
   async function fetchAllLists() {
     try {
-      let response = await axios.get("http://localhost:8080/playlists");
+      let response = await axios.get("https://musicool-show-list.onrender.com/playlists");
       setShowList(response.data.data);
       console.log(response);
     } catch (error) {
@@ -61,7 +61,7 @@ function Playlist() {
     if (confirmed) {
       try {
         let response = await axios.delete(
-          `http://localhost:8080/playlists/${id}`
+          `https://musicool-show-list.onrender.com/playlists/${id}`
         );
         console.log(response.data);
 
