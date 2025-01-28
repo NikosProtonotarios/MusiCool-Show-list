@@ -4,16 +4,9 @@ import Musicals from "./components/Musicals";
 import MusicalList from "./components/musicalList";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import UserPlaylist from "./components/userPlaylist";
 
 function App() {
   const [musicals, setMusicals] = useState([]);
-  const [playlistName, setPlaylistName] = useState("");
-
-  const handlePlaylistChange = (event) => {
-    event.preventDefault();
-    setPlaylistName(event.target.value);
-  };
 
   async function getAllMusicals() {
     try {

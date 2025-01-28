@@ -1,30 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import UserPlaylist from "./userPlaylist";
 
 function Playlist() {
-  // State to track the playlist name and the musical names
+  // State to track the playlist name
   const [playlistName, setPlaylistName] = useState("");
-  const [musicals, setMusicals] = useState([]); // Track the musical name input
-  const [addMusical, setAddMusical] = useState(false); // Flag to add musical to the playlist
   const [showList, setShowList] = useState([]);
-  // const [selectedMusicalIds, setSelectedMusicalIds] = useState([]);
 
-  // console.log(selectedMusicalId);
   // Handle input change for playlist name
   function handlePlaylistNameChange(event) {
     setPlaylistName(event.target.value); // Update the playlist name with the user's input
   }
 
-  console.log(playlistName);
-  // Handle input change for musical name
-  function handleMusicalChange(event) {
-    setMusicals(event.target.value); // Update the musical name with the user's input
-  }
-  console.log(showList);
   async function handleCreatingNewList(e) {
     e.preventDefault();
-    setAddMusical(!addMusical);
     try {
       let newList = {
         name: playlistName,
@@ -43,7 +31,6 @@ function Playlist() {
       console.log(error.message);
     }
   }
-  console.log(addMusical);
 
   async function fetchAllLists() {
     try {
@@ -99,7 +86,7 @@ function Playlist() {
           <input className="hue add" type="submit" value="Add a Musical to the List" />
         </div>
       </form>
-      {/* {addMusical ? <UserPlaylist /> : null} */}
+
       <div className="showlist">
         <h2>Current Showlist</h2>
         <div className="showlist-container">
