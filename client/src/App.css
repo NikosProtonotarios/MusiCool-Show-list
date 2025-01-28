@@ -284,7 +284,7 @@ body {
 /* General styles for screens 960px and below */
 @media (max-width: 960px) {
     .create-musical {
-        width: 100%;
+        width: 90%;
         font-size: 14px;
         padding: 8px;
     }
@@ -395,5 +395,29 @@ body {
 
     .deleteItem {
         right: 3px;
+    }
+
+    .add {
+        width: 160px;
+    }
+}
+
+@media (max-width: 431px) {
+
+    .add {
+        /* width: 160px; */
+        /* font-size: 10px; */
+    }
+
+    .caligraf {
+        display:
+    }
+
+    .enterAmusical {
+        width: 175px;
+    }
+
+    .input-groupContainer {
+        width: 40%;
     }
 }

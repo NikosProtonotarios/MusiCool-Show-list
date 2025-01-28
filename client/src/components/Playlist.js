@@ -83,7 +83,7 @@ function Playlist() {
       <h3 style={{ textAlign: "center" }}>Create Your Musical List</h3>
       <form onSubmit={handleCreatingNewList}>
         <div className="create-playlist">
-          <div>
+          <div className="input-groupContainer">
             <label className="caligraf" htmlFor="playlist-name">
               Title:{" "}
             </label>
